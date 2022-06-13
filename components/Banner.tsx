@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Movie } from "../typing";
 import Image from "next/image";
-import { randomInt } from "crypto";
 import { baseUrl } from "../constants/movie";
 import { FaPlay } from "react-icons/fa";
 import { InformationCircleIcon } from "@heroicons/react/solid";
 interface Props {
   netflixOriginals: Movie[];
 }
+
 export default function Banner({ netflixOriginals }: Props) {
   const [movie, setMovie] = useState<Movie | null>(null);
 

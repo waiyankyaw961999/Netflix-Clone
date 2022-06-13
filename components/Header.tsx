@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import { SearchIcon, BellIcon } from "@heroicons/react/solid";
 import Link from "next/link";
 import BasicMenu from "./BasicMenu";
+import useAuth from "../hooks/useAuth";
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { logout } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,6 +18,7 @@ function Header() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
   return (
     <header className={`${isScrolled && "bg-[#141414]"}`}>
       <div className="flex w-full items-center space-x-2 md:space-x-10">
@@ -42,6 +45,7 @@ function Header() {
         <BellIcon className="h-6 w-6" />
         <Link href="/account">
           <img
+            onClick={logout}
             src="https://rb.gy/g1pwyx"
             alt=""
             className="cursor-pointer rounded"
