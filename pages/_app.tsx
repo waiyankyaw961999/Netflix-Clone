@@ -5,7 +5,7 @@ import { AuthProvider } from "../hooks/useAuth";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AuthProvider>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </AuthProvider>
   );
 }

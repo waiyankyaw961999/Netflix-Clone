@@ -28,7 +28,9 @@ const Home = ({
   documentaries,
 }: Props) => {
   const { logout, loading } = useAuth();
-  if (loading) return <div>Loading...</div>;
+  if (loading) {
+    return <div>Loading...</div>;
+  }
   return (
     <div
       className={`relative bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh]`}
