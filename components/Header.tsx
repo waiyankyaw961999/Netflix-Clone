@@ -21,7 +21,7 @@ function Header() {
 
   return (
     <header className={`${isScrolled && "bg-[#141414]"}`}>
-      <div className="flex w-full items-center space-x-2 md:space-x-10">
+      <div className="flex items-center space-x-2 md:space-x-10">
         <img
           src="https://rb.gy/ulxxee"
           width={100}
@@ -45,7 +45,6 @@ function Header() {
         <BellIcon className="h-6 w-6" />
         <Link href="/account">
           <img
-            onClick={logout}
             src="https://rb.gy/g1pwyx"
             alt=""
             className="cursor-pointer rounded"

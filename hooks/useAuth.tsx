@@ -103,5 +103,5 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 };
 
 export default function useAuth() {
-  return useContext(AuthContext);
+  return useContext(AuthContext)
 }

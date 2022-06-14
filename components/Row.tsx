@@ -17,7 +17,6 @@ function Row({ title, movies }: Props) {
 
     if (rowRef.current) {
       const { scrollLeft, clientWidth } = rowRef.current;
-      console.log(scrollLeft, clientWidth);
       const scrollTo =
         type === "left" ? scrollLeft - clientWidth : scrollLeft + clientWidth;
       if (scrollTo < 0) setisMoved(false);
