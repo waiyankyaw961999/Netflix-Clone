@@ -7,7 +7,7 @@ import { useRecoilState } from "recoil";
 import { DocumentData } from "firebase/firestore";
 interface Props {
   movie: Movie | DocumentData;
-  className: string;
+  className: string | null;
 }
 
 function Thumbnail({ movie, className }: Props) {

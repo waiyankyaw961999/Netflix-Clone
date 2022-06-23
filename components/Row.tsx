@@ -6,7 +6,7 @@ import { DocumentData } from "firebase/firestore";
 
 type Props = {
   title: string;
-  movies: Movie | DocumentData[];
+  movies: Movie[] | DocumentData;
 };
 
 function Row({ title, movies }: Props) {
@@ -42,8 +42,8 @@ function Row({ title, movies }: Props) {
           ref={rowRef}
           className="flex items-center space-x-0.5 overflow-x-scroll scrollbar-hide md:space-x-2.5 md:p-2"
         >
-          {movies.map((movie) => (
-            <Thumbnail key={movie.id} movie={movie} />
+          {movies.map((movie: Movie) => (
+            <Thumbnail className="" key={movie.id} movie={movie} />
           ))}
         </div>
         <ChevronRightIcon
