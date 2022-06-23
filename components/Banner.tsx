@@ -21,7 +21,7 @@ export default function Banner({ netflixOriginals }: Props) {
     );
   }, [netflixOriginals]);
   return (
-    <div className="flex flex-col space-y-2 py-16 md:space-y-4 lg:h-[65vh] lg:pb-12">
+    <div className="flex flex-col space-y-2 py-16 md:space-y-4 lg:h-[20vh] lg:pb-12">
       <div className="absolute top-0 left-0 -z-10 h-[95vh] w-screen">
         <Image
           layout="fill"

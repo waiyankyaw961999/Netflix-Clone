@@ -64,7 +64,7 @@ const Home = ({
         <Banner netflixOriginals={netflixOriginals} />
 
         <section
-          style={{ position: "relative", top: "10rem" }}
+          style={{ position: "relative", top: "18rem" }}
           className="md:space-y-24"
         >
           <Row title="Trending Now" movies={trendingNow} />
