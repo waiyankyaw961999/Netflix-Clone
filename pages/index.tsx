@@ -11,6 +11,7 @@ import requests from "../utils/requests";
 import Plans from "../components/Plans";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../config/fireBase.config";
+import useList from "../hooks/useList";
 interface Props {
   netflixOriginals: Movie[];
   trendingNow: Movie[];
@@ -37,6 +38,8 @@ const Home = ({
   const { user, loading } = useAuth();
   const showModal = useRecoilValue(modalState);
   const movie = useRecoilValue(movieState);
+
+  const list = useList(user?.uid);
 
   // if (loading || subscription === null) return null;
 
@@ -65,6 +68,7 @@ const Home = ({
           <Row title="Top Rated" movies={topRated} />
           <Row title="Action Thrillers" movies={actionMovies} />
           {/* My List */}
+          {list.length > 0 && <Row title="My List" movies={list} />}
 
           <Row title="Comedies" movies={comedyMovies} />
           <Row title="Scary Movies" movies={horrorMovies} />

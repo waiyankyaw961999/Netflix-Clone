@@ -4,14 +4,17 @@ import Image from "next/image";
 import Modal from "../components/Modal";
 import { modalState, movieState } from "../atoms/modalAtom";
 import { useRecoilState } from "recoil";
+import { DocumentData } from "firebase/firestore";
 interface Props {
-  movie: Movie;
+  movie: Movie | DocumentData;
+  className: string;
 }
 
-function Thumbnail({ movie }: Props) {
+function Thumbnail({ movie, className }: Props) {
   const [showModal, setModal] = useRecoilState(modalState);
   const [currentmovie, setCurrentMovie] = useRecoilState(movieState);
   const [showsinglemovie, setShowSingleMovie] = useState(false);
+  console.log(className);
   return (
     <div
       onClick={() => {
@@ -19,7 +22,7 @@ function Thumbnail({ movie }: Props) {
         setModal(!showModal);
         setShowSingleMovie(true);
       }}
-      className={`relative h-28 min-w-[180px] cursor-pointer transition duration-200 ease-out md:h-36 md:min-w-[260px] md:hover:scale-105`}
+      className={`relative h-28 cursor-pointer transition duration-200 ease-out md:h-36 md:min-w-[260px] md:hover:scale-105 ${className}`}
     >
       <Image
         src={`https://image.tmdb.org/t/p/w500${
