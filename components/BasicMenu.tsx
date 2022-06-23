@@ -3,6 +3,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
+import Link from "next/link";
 export default function BasicMenu() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -43,11 +44,11 @@ export default function BasicMenu() {
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem onClick={handleClose}>Home</MenuItem>
+        <MenuItem onClick={handleClose}><Link href="/">Home</Link></MenuItem>
         <MenuItem onClick={handleClose}>TV Shows</MenuItem>
         <MenuItem onClick={handleClose}>Movies</MenuItem>
         <MenuItem onClick={handleClose}>New & Popular</MenuItem>
-        <MenuItem onClick={handleClose}>My List</MenuItem>
+        <MenuItem onClick={handleClose}><Link href="/my-list">My List</Link></MenuItem>
       </Menu>
     </div>
   );
