@@ -9,7 +9,7 @@ import useAuth from "../hooks/useAuth";
 import { Movie } from "../typing";
 import requests from "../utils/requests";
 import Plans from "../components/Plans";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, DocumentData, getDocs } from "firebase/firestore";
 import { db } from "../config/fireBase.config";
 import useList from "../hooks/useList";
 interface Props {
@@ -21,7 +21,7 @@ interface Props {
   horrorMovies: Movie[];
   romanceMovies: Movie[];
   documentaries: Movie[];
-  products: Product[];
+  products: DocumentData[];
 }
 
 const Home = ({
