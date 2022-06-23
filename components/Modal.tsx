@@ -18,8 +18,11 @@ import {
   deleteDoc,
   doc,
   DocumentData,
-  onSnapshot,
+  query,
+  where,
   setDoc,
+  getDoc,
+  onSnapshot,
 } from "firebase/firestore";
 import { db } from "../config/fireBase.config";
 import useAuth from "../hooks/useAuth";
@@ -27,14 +30,14 @@ import toast, { Toaster } from "react-hot-toast";
 
 function Modal() {
   const [movie, setMovie] = useRecoilState(movieState);
+  const [movies, setMovies] = useState<DocumentData[] | Movie[]>([]);
   const [trailer, setTrailer] = useState("");
   const [showModal, setShowModal] = useRecoilState(modalState);
   const [muted, setMuted] = useState(true);
   const [genres, setGenres] = useState<Genre[]>([]);
   const [addedToList, setAddedToList] = useState(false);
-  const { user } = useAuth();
   const [playing, setPlaying] = useState(false);
-  const [movies, setMovies] = useState<DocumentData[] | Movie[]>([]);
+  const { user } = useAuth();
 
   const toastStyle = {
     background: "white",
@@ -76,6 +79,39 @@ function Modal() {
     toast.dismiss();
   };
 
+  const handleList = async () => {
+    if (addedToList) {
+      await deleteDoc(
+        doc(db, "customers", user!.uid, "myList", movie?.id.toString()!)
+      );
+      toast(
+        `${
+          movie?.title || movie?.original_name
+        } has been removed from My List.`,
+        {
+          duration: 8000,
+        }
+      );
+    } else {
+      await setDoc(
+        doc(db, "customers", user!.uid, "myList", movie?.id.toString()!),
+        {
+          ...movie,
+        }
+      );
+    }
+  };
+
+  useEffect(() => {
+    onSnapshot(collection(db, "customers", user!.uid, "myList"), (snapshot) =>
+      snapshot.forEach((doc) => {
+        if (doc.data().id == movie?.id) {
+          setAddedToList(true);
+        }
+      })
+    );
+  }, [movie, db]);
+
   return (
     <MuiModal
       open={showModal}
@@ -84,6 +120,7 @@ function Modal() {
        max-w-5xl overflow-hidden overflow-y-scroll rounded-md scrollbar-hide"
     >
       <>
+        <Toaster position="bottom-center" />
         <button
           className="modalButton absolute right-5 top-5 !z-40 h-9 w-9 border-none bg-[#181818] hover:bg-[#181818]"
           onClick={handleClose}
@@ -108,20 +145,20 @@ function Modal() {
                   onClick={() => setPlaying(!playing)}
                   className="flex items-center gap-x-2 rounded bg-white px-8 text-xl font-bold text-black transition hover:bg-[#e6e6e6]"
                 >
-                  <FaPlay className="h-7 w-7 text-black" />
-                  Play
+                  <FaPause className="h-7 w-7 text-black" />
+                  Pause
                 </button>
               ) : (
                 <button
                   onClick={() => setPlaying(!playing)}
                   className="flex items-center gap-x-2 rounded bg-white px-8 text-xl font-bold text-black transition hover:bg-[#e6e6e6]"
                 >
-                  <FaPause className="h-7 w-7 text-black" />
-                  Pause
+                  <FaPlay className="h-7 w-7 text-black" />
+                  Play
                 </button>
               )}
 
-              <button className="modalButton">
+              <button onClick={handleList} className="modalButton">
                 {addedToList ? (
                   <CheckIcon className="h-7 w-7" />
                 ) : (
@@ -143,9 +180,9 @@ function Modal() {
         </div>
         <div className="flex space-x-16 rounded-b-md bg-[#181818] px-10 py-8">
           <div className="space-y-6 text-lg">
-            {/* <div className="flex items-center space-x-2 text-sm">
+            <div className="flex items-center space-x-2 text-sm">
               <p className="font-semibold text-green-400">
-                {movie!.vote_average * 10}% Match
+                {movie?.vote_average * 10}% Match
               </p>
               <p className="font-light">
                 {movie?.release_date || movie?.first_air_date}
@@ -153,7 +190,7 @@ function Modal() {
               <div className="flex h-4 items-center justify-center rounded border border-white/40 px-1.5 text-xs">
                 HD
               </div>
-            </div> */}
+            </div>
             <div className="flex flex-col gap-x-10 gap-y-4 font-light md:flex-row">
               <p className="w-5/6">{movie?.overview}</p>
               <div className="flex flex-col space-y-3 text-sm">

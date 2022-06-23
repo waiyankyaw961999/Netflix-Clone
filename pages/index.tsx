@@ -1,4 +1,3 @@
-import { getProducts, Product } from "@stripe/firestore-stripe-payments";
 import Head from "next/head";
 import { useRecoilValue } from "recoil";
 import { modalState, movieState } from "../atoms/modalAtom";
@@ -9,7 +8,9 @@ import Row from "../components/Row";
 import useAuth from "../hooks/useAuth";
 import { Movie } from "../typing";
 import requests from "../utils/requests";
-
+import Plans from "../components/Plans";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../config/fireBase.config";
 interface Props {
   netflixOriginals: Movie[];
   trendingNow: Movie[];
@@ -37,9 +38,9 @@ const Home = ({
   const showModal = useRecoilValue(modalState);
   const movie = useRecoilValue(movieState);
 
-  if (loading === null) return null;
+  // if (loading || subscription === null) return null;
 
-  // if (!subscription) return <Plans products={products} />
+  // if (!subscription) return <Plans products={products} />;
 
   return (
     <div
@@ -79,6 +80,12 @@ const Home = ({
 export default Home;
 
 export const getServerSideProps = async () => {
+  let products: any = [];
+  const querySnapshot = await getDocs(collection(db, "products"));
+  querySnapshot.forEach((doc) => {
+    products.push(doc.data());
+  });
+
   const [
     netflixOriginals,
     trendingNow,
@@ -109,6 +116,7 @@ export const getServerSideProps = async () => {
       horrorMovies: horrorMovies.results,
       romanceMovies: romanceMovies.results,
       documentaries: documentaries.results,
+      products: products,
     },
   };
 };

@@ -3,6 +3,8 @@ import Head from "next/head";
 import Image from "next/image";
 import { useForm, SubmitHandler } from "react-hook-form";
 import useAuth from "../hooks/useAuth";
+import { useRouter } from "next/router";
+import Loader from "../components/Loader";
 type Inputs = {
   email: string;
   password: string;
@@ -11,8 +13,8 @@ type Inputs = {
 function Login() {
   const [login, setLogin] = React.useState(false);
 
-  const { signUp, signIn } = useAuth();
-
+  const { user, signUp, signIn } = useAuth();
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -27,6 +29,10 @@ function Login() {
       await signUp(data.email, data.password);
     }
   };
+
+  if (user) {
+    router.push("/");
+  }
 
   return (
     <div className="relative flex h-screen w-screen flex-col md:items-center md:justify-center">
