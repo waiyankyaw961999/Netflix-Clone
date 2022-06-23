@@ -5,8 +5,7 @@ This project is built with Next.js using tailwindCss along with TypeScript.
 Authenthication is developed with Firebase auth and firestore is used for storing the products and list of movie collections.
 The intergration of Stripe payment with Firestore is not implemented due to the payment restrictions for certain countries including Myanmar.
 </p>
-Movies API is used from [The Movie Database (TMDB)](https://www.themoviedb.org/documentation/api)
-
+Movies API is used from [The Movie Database (TMDB)](https://www.themoviedb.org/documentation/api) <br>
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
