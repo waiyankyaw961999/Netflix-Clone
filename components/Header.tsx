@@ -25,6 +25,7 @@ function Header() {
       <div className="flex items-center space-x-2 md:space-x-10">
         <Link href="/">
           <Image
+            alt= "#"
             src="https://rb.gy/ulxxee"
             width={100}
             height={100}

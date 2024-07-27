@@ -28,6 +28,7 @@ function Account({ products }: Props) {
       <header className={`bg-[#141414]`}>
         <Link href="/">
           <Image
+            alt= "#"
             src="https://rb.gy/ulxxee"
             width={120}
             height={120}
@@ -37,7 +38,7 @@ function Account({ products }: Props) {
         <Link href="/account">
           <Image
             src="https://rb.gy/g1pwyx"
-            alt=""
+            alt="#"
             className="cursor-pointer rounded"
           />
         </Link>

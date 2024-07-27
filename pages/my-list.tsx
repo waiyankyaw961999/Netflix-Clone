@@ -3,7 +3,6 @@ import Head from "next/head";
 import Header from "../components/Header";
 import useList from "../hooks/useList";
 import useAuth from "../hooks/useAuth";
-import Image from "next/image";
 import Thumbnail from "../components/Thumbnail";
 import { Movie } from "../typing";
 function myList() {

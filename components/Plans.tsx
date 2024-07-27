@@ -26,6 +26,7 @@ export default function Plans({ products }: any) {
       <header>
         <Link href="/">
           <Image
+            alt="#"
             src="https://rb.gy/ulxxee"
             width={150}
             height={90}
