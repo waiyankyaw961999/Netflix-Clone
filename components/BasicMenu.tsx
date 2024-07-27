@@ -44,11 +44,15 @@ export default function BasicMenu() {
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem onClick={handleClose}><Link href="/">Home</Link></MenuItem>
+        <MenuItem onClick={handleClose}>
+          <Link href="/">Home</Link>
+        </MenuItem>
         <MenuItem onClick={handleClose}>TV Shows</MenuItem>
         <MenuItem onClick={handleClose}>Movies</MenuItem>
         <MenuItem onClick={handleClose}>New & Popular</MenuItem>
-        <MenuItem onClick={handleClose}><Link href="/my-list">My List</Link></MenuItem>
+        <MenuItem onClick={handleClose}>
+          <Link href="/my-list">My List</Link>
+        </MenuItem>
       </Menu>
     </div>
   );

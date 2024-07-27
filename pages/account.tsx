@@ -29,7 +29,7 @@ function Account({ products }: Props) {
       <header className={`bg-[#141414]`}>
         <Link href="/">
           <Image
-            alt= "#"
+            alt="#"
             src="https://rb.gy/ulxxee"
             width={120}
             height={120}
