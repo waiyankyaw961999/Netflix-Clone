@@ -6,6 +6,7 @@ module.exports = withTM({
   distDir: "build",
   reactStrictMode: true,
   images: {
+    unoptimized: true,
     domains: ["rb.gy", "image.tmdb.org"],
   },
 });
