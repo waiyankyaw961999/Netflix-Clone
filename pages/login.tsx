@@ -46,7 +46,7 @@ function Login() {
         className="-z-10 !hidden opacity-60 sm:!inline"
         objectFit="cover"
       />
-      <img
+      <Image
         src="https://rb.gy/ulxxee"
         width={150}
         height={150}
