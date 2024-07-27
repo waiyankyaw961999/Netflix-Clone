@@ -25,6 +25,7 @@ function Thumbnail({ movie, className }: Props) {
       className={`relative h-28 cursor-pointer transition duration-200 ease-out md:h-36 md:min-w-[260px] md:hover:scale-105 ${className}`}
     >
       <Image
+        unoptimized={true}
         src={`https://image.tmdb.org/t/p/w500${
           movie.backdrop_path || movie.poster_path
         }`}

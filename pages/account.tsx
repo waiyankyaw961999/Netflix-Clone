@@ -29,6 +29,7 @@ function Account({ products }: Props) {
       <header className={`bg-[#141414]`}>
         <Link href="/">
           <Image
+            unoptimized={true}
             alt="#"
             src="https://rb.gy/ulxxee"
             width={120}
@@ -38,6 +39,7 @@ function Account({ products }: Props) {
         </Link>
         <Link href="/account">
           <Image
+            unoptimized={true}
             src="https://rb.gy/g1pwyx"
             alt="#"
             className="cursor-pointer rounded"
@@ -48,7 +50,12 @@ function Account({ products }: Props) {
         <div className="flex flex-col gap-x-4 md:flex-row md:items-center">
           <h1 className="text-3xl md:text-4xl">Account</h1>
           <div className="-ml-0.5 flex items-center gap-x-1.5">
-            <Image src="https://rb.gy/4vfk4r" alt="" className="h-7 w-7" />
+            <Image
+              src="https://rb.gy/4vfk4r"
+              alt=""
+              className="h-7 w-7"
+              unoptimized={true}
+            />
             <p className="text-xs font-semibold text-[#555]">
               Member since {subscription?.created}
             </p>

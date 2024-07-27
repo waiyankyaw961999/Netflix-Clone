@@ -24,6 +24,7 @@ export default function Banner({ netflixOriginals }: Props) {
     <div className="flex flex-col space-y-2 py-16 md:space-y-4 lg:h-[20vh] lg:pb-12">
       <div className="absolute top-0 left-0 -z-10 h-[95vh] w-screen">
         <Image
+          unoptimized={true}
           layout="fill"
           objectFit="cover"
           src={`${baseUrl}${movie?.backdrop_path || movie?.poster_path}`}

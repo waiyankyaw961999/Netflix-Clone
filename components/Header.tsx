@@ -25,6 +25,7 @@ function Header() {
       <div className="flex items-center space-x-2 md:space-x-10">
         <Link href="/">
           <Image
+            unoptimized={true}
             alt="#"
             src="https://rb.gy/ulxxee"
             width={100}
@@ -52,6 +53,7 @@ function Header() {
         <BellIcon className="h-6 w-6" />
         <Link href="/account">
           <Image
+            unoptimized={true}
             src="https://rb.gy/g1pwyx"
             alt=""
             className="cursor-pointer rounded"

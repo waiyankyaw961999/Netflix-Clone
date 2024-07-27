@@ -32,6 +32,7 @@ export default function Plans({ products }: any) {
             width={150}
             height={90}
             className="cursor-pointer object-contain"
+            unoptimized={true}
           />
         </Link>
         <button

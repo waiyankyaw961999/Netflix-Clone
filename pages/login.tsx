@@ -41,6 +41,7 @@ function Login() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Image
+        unoptimized={true}
         src="https://rb.gy/p2hphi"
         layout="fill"
         className="-z-10 !hidden opacity-60 sm:!inline"
@@ -48,6 +49,7 @@ function Login() {
         alt="#"
       />
       <Image
+        unoptimized={true}
         src="https://rb.gy/ulxxee"
         width={150}
         height={150}
