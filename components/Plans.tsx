@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import useAuth from "../hooks/useAuth";
+import Image from "next/image";
 import { CheckIcon } from "@heroicons/react/outline";
 import Loader from "./Loader";
 import { loadCheckout } from "../lib/stripe";
